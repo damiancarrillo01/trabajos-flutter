@@ -19,7 +19,9 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Pokémon Carousel'),
       ),
-      body: PokemonCarousel(),
+      body: Center(
+        child: PokemonCarousel(),
+      ),
     );
   }
 }

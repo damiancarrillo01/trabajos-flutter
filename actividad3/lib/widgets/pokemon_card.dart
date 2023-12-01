@@ -3,16 +3,16 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 class PokemonCarousel extends StatelessWidget {
   final List<Map<String, dynamic>> pokemonData = [
-    {'nombre': 'Bulbasaur', 'tipo': 'Planta', 'numero': '001', 'imagen': 'bulbasaur2.jpg'},
-    {'nombre': 'Charmander', 'tipo': 'Fuego', 'numero': '004', 'imagen': 'charmander.jpg'},
-    {'nombre': 'Squirtle', 'tipo': 'Agua', 'numero': '007', 'imagen': 'squirtle.jpg'},
+    {'nombre': 'Bulbasaur', 'tipo': 'Planta', 'numero': '001', 'imagen': 'bulbasaur2.png'},
+    {'nombre': 'Charmander', 'tipo': 'Fuego', 'numero': '004', 'imagen': 'charmander.png'},
+    {'nombre': 'Squirtle', 'tipo': 'Agua', 'numero': '007', 'imagen': 'squirtle.png'},
   ];
 
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
-        height: 370.0,
+        height: 560.0,
         enlargeCenterPage: true,
         enableInfiniteScroll: true,
       ),
@@ -33,18 +33,39 @@ class PokemonCard extends StatelessWidget {
     return Card(
       child: Column(
         children: [
-          Image.asset('${pokemon['imagen']}',
-          width: 200, 
-            height: 200,
-            fit: BoxFit.cover,),
-          ListTile(
-            title: Text(pokemon['nombre']),
-            subtitle: Text('#${pokemon['numero']}'),
+          Padding(
+            padding: EdgeInsets.all(30.0), // Ajusta según sea necesario
+            child: Image.asset(
+              'assets/${pokemon['imagen']}',
+              width: 240,
+              height: 240,
+              fit: BoxFit.cover,
+            ),
           ),
-          TagWidget(type: pokemon['tipo']),
-        ],
-      ),
-    );
+          Padding(
+            padding: EdgeInsets.only(top: 30.0, left: 20.0), // Ajusta según sea necesario
+            child: ListTile(
+              title: Text(
+                pokemon['nombre'],
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle: Text(
+                'Pokedex:#${pokemon['numero']}',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          ),
+          TagWidget(
+            type:pokemon['tipo'],
+            ),
+          ],
+        ),
+      );
   }
 }
 
@@ -58,14 +79,18 @@ class TagWidget extends StatelessWidget {
     Color tagColor = _getColorForType(type);
     
     return Container(
-      padding: EdgeInsets.all(8.0),
+      margin: EdgeInsets.only(top: 6.0, left: 20.0),
+      padding: EdgeInsets.symmetric(
+        vertical: 10.0, 
+        horizontal: 60.0,
+      ),
       decoration: BoxDecoration(
         color: tagColor,
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Text(
         type,
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white,fontSize:20 ),
       ),
     );
   }
