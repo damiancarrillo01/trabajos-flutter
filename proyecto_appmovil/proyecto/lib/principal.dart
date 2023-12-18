@@ -32,26 +32,31 @@ class _PagSaldoState extends State<PagSaldo> {
           height: 40.0,
         ),
       ),
-      body: Container(
-        color: Color(0xFFEBEFFA), // Color de fondo #ebeffa
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            // Rectángulo blanco para el saldo actual
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(16.0),
-              color: Colors.white,
-              child: Text(
-                'Saldo Actual: \$${saldoActual.toStringAsFixed(2)} CLP',
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-Regular', color: Color(0xFF27348B)),
+      body: SingleChildScrollView(
+        child: Container(
+          color: Color(0xFFEBEFFA), // Color de fondo #ebeffa
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // Rectángulo blanco para el saldo actual
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.all(16.0),
+                color: Colors.white,
+                child: Text(
+                  'Saldo Actual: \$${saldoActual.toStringAsFixed(2)} CLP',
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'OpenSans-Regular',
+                      color: Color(0xFF27348B)),
+                ),
               ),
-            ),
-            SizedBox(height: 20.0),
+              SizedBox(height: 20.0),
 
-            // Rectángulo blanco más grande para Movimientos de Dinero
-            Container(
+              // Rectángulo blanco más grande para Movimientos de Dinero
+              Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(16.0),
                 color: Colors.white,
@@ -62,7 +67,11 @@ class _PagSaldoState extends State<PagSaldo> {
                     children: [
                       Text(
                         'Movimientos de Dinero:',
-                        style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-Regular', color: Color(0xFF27348B)),
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'OpenSans-Regular',
+                            color: Color(0xFF27348B)),
                       ),
                       SizedBox(height: 10.0),
                       SingleChildScrollView(
@@ -75,7 +84,8 @@ class _PagSaldoState extends State<PagSaldo> {
                           rows: movimientos.map((movimiento) {
                             return DataRow(cells: [
                               DataCell(Text(DateTime.now().toString())),
-                              DataCell(Text('${_obtenerSigno(movimiento.tipo)}\$${movimiento.monto.toStringAsFixed(2)}')),
+                              DataCell(Text(
+                                  '${_obtenerSigno(movimiento.tipo)}\$${movimiento.monto.toStringAsFixed(2)}')),
                               DataCell(Text(movimiento.descripcion)),
                             ]);
                           }).toList(),
@@ -86,98 +96,127 @@ class _PagSaldoState extends State<PagSaldo> {
                 ),
               ),
 
-            // Sección de Añadir Gasto del Día
-            SizedBox(height: 20.0),
-            Text(
-              'Añadir Gasto del Día:',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-Regular', color: Color(0xFF27348B)),
-            ),
-            SizedBox(height: 10.0),
-            ElevatedButton(
-              onPressed: () {
-                _mostrarDialogoAgregarMovimiento(context, 'Gasto');
-              },
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xFF27348B),
+              // Sección de Añadir Gasto del Día
+              SizedBox(height: 20.0),
+              Text(
+                'Añadir Gasto del Día:',
+                style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'OpenSans-Regular',
+                    color: Color(0xFF27348B)),
               ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.add, color: Colors.white),
-                  SizedBox(width: 8.0),
-                  Text('Añadir Gasto', style: TextStyle(fontFamily: 'OpenSans-Regular', color: Colors.white)),
-                ],
+              SizedBox(height: 10.0),
+              ElevatedButton(
+                onPressed: () {
+                  _mostrarDialogoAgregarMovimiento(context, 'Gasto');
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF27348B),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.add, color: Colors.white),
+                    SizedBox(width: 8.0),
+                    Text('Añadir Gasto',
+                        style: TextStyle(
+                            fontFamily: 'OpenSans-Regular',
+                            color: Colors.white)),
+                  ],
+                ),
               ),
-            ),
 
-            // Sección de Añadir Ingreso del Día
-            SizedBox(height: 20.0),
-            Text(
-              'Añadir Ingreso del Día:',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-Regular', color: Color(0xFF27348B)),
-            ),
-            SizedBox(height: 10.0),
-            ElevatedButton(
-              onPressed: () {
-                _mostrarDialogoAgregarMovimiento(context, 'Ingreso');
-              },
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xFF27348B),
+              // Sección de Añadir Ingreso del Día
+              SizedBox(height: 20.0),
+              Text(
+                'Añadir Ingreso del Día:',
+                style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'OpenSans-Regular',
+                    color: Color(0xFF27348B)),
               ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.add, color: Colors.white),
-                  SizedBox(width: 8.0),
-                  Text('Añadir Ingreso', style: TextStyle(fontFamily: 'OpenSans-Regular', color: Colors.white)),
-                ],
+              SizedBox(height: 10.0),
+              ElevatedButton(
+                onPressed: () {
+                  _mostrarDialogoAgregarMovimiento(context, 'Ingreso');
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF27348B),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.add, color: Colors.white),
+                    SizedBox(width: 8.0),
+                    Text('Añadir Ingreso',
+                        style: TextStyle(
+                            fontFamily: 'OpenSans-Regular',
+                            color: Colors.white)),
+                  ],
+                ),
               ),
-            ),
 
-            // Sección de Añadir Movimiento Mensual
-            SizedBox(height: 20.0),
-            Text(
-              'Añadir Movimiento Mensual:',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-Regular', color: Color(0xFF27348B)),
-            ),
-            SizedBox(height: 10.0),
-            ElevatedButton(
-              onPressed: () {
-                _mostrarDialogoAgregarMovimientoMensual(context);
-              },
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xFF27348B),
+              // Sección de Añadir Movimiento Mensual
+              SizedBox(height: 20.0),
+              Text(
+                'Añadir Movimiento Mensual:',
+                style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'OpenSans-Regular',
+                    color: Color(0xFF27348B)),
               ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.add, color: Colors.white),
-                  SizedBox(width: 8.0),
-                  Text('Añadir Movimiento Mensual', style: TextStyle(fontFamily: 'OpenSans-Regular', color: Colors.white)),
-                ],
+              SizedBox(height: 10.0),
+              ElevatedButton(
+                onPressed: () {
+                  _mostrarDialogoAgregarMovimientoMensual(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF27348B),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.add, color: Colors.white),
+                    SizedBox(width: 8.0),
+                    Text('Añadir Movimiento Mensual',
+                        style: TextStyle(
+                            fontFamily: 'OpenSans-Regular',
+                            color: Colors.white)),
+                  ],
+                ),
               ),
-            ),
 
-            // Sección Necesitas Ahorrar?
-            SizedBox(height: 20.0),
-            Text(
-              '¿Necesitas Ahorrar?',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-Regular', color: Color(0xFF27348B)),
-            ),
-            SizedBox(height: 10.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AhorrosProgramados()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xFF27348B),
+              // Sección Necesitas Ahorrar?
+              SizedBox(height: 20.0),
+              Text(
+                '¿Necesitas Ahorrar?',
+                style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'OpenSans-Regular',
+                    color: Color(0xFF27348B)),
               ),
-              child: Text('Ahorros Programados', style: TextStyle(fontFamily: 'OpenSans-Regular', color: Colors.white)),
-            ),
-          ],
+              SizedBox(height: 10.0),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AhorrosProgramados()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF27348B),
+                ),
+                child: Text('Ahorros Programados',
+                    style: TextStyle(
+                        fontFamily: 'OpenSans-Regular', color: Colors.white)),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -186,165 +225,173 @@ class _PagSaldoState extends State<PagSaldo> {
   String _obtenerSigno(String tipo) {
     return tipo == 'Gasto' ? '-' : '+';
   }
-  Future<void> _mostrarDialogoAgregarMovimiento(BuildContext context, String tipo) async {
-  double monto = 0.0;
-  String descripcion = '';
 
-  return showDialog<void>(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Row(
-          children: [
-            Icon(Icons.add),
-            SizedBox(width: 8.0),
-            Text(
-              'Añadir $tipo del Día',
-              style: TextStyle(fontSize: 16.0, fontFamily: 'OpenSans-Regular', color: Color(0xFF27348B)),
-            ),
-          ],
-        ),
-        content: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              TextField(
-                keyboardType: TextInputType.number,
-                onChanged: (value) {
-                  monto = double.tryParse(value) ?? 0.0;
-                },
-                decoration: InputDecoration(
-                  labelText: 'Monto',
-                  prefixIcon: Icon(Icons.attach_money),
-                ),
-              ),
-              TextField(
-                onChanged: (value) {
-                  descripcion = value;
-                },
-                decoration: InputDecoration(
-                  labelText: 'Descripción',
-                  prefixIcon: Icon(Icons.description),
-                ),
+  Future<void> _mostrarDialogoAgregarMovimiento(
+      BuildContext context, String tipo) async {
+    double monto = 0.0;
+    String descripcion = '';
+
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              Icon(Icons.add),
+              SizedBox(width: 8.0),
+              Text(
+                'Añadir $tipo del Día',
+                style: TextStyle(
+                    fontSize: 16.0,
+                    fontFamily: 'OpenSans-Regular',
+                    color: Color(0xFF27348B)),
               ),
             ],
           ),
-        ),
-        actions: <Widget>[
-          ElevatedButton(
-            onPressed: () {
-              agregarMovimiento(monto, descripcion, tipo);
-              Navigator.of(context).pop();
-            },
-            child: Text('Aceptar'),
+          content: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                TextField(
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    monto = double.tryParse(value) ?? 0.0;
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Monto',
+                    prefixIcon: Icon(Icons.attach_money),
+                  ),
+                ),
+                TextField(
+                  onChanged: (value) {
+                    descripcion = value;
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Descripción',
+                    prefixIcon: Icon(Icons.description),
+                  ),
+                ),
+              ],
+            ),
           ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: Text('Cancelar'),
-          ),
-        ],
-      );
-    },
-  );
-}
-
-
-  Future<void> _mostrarDialogoAgregarMovimientoMensual(BuildContext context) async {
-  String nombre = '';
-  double monto = 0.0;
-  int periodo = 0;
-  int dia = 1;
-  String descripcion = '';
-
-  return showDialog<void>(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Row(
-          children: [
-            Icon(Icons.add),
-            SizedBox(width: 8.0),
-            Text(
-              'Añadir Movimiento',
-              style: TextStyle(fontSize: 16.0, fontFamily: 'OpenSans-Regular', color: Color(0xFF27348B)),
+          actions: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                agregarMovimiento(monto, descripcion, tipo);
+                Navigator.of(context).pop();
+              },
+              child: Text('Aceptar'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancelar'),
             ),
           ],
-        ),
-        content: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              TextField(
-                onChanged: (value) {
-                  nombre = value;
-                },
-                decoration: InputDecoration(
-                  labelText: 'Nombre',
-                  prefixIcon: Icon(Icons.person),
-                ),
-              ),
-              TextField(
-                keyboardType: TextInputType.number,
-                onChanged: (value) {
-                  monto = double.tryParse(value) ?? 0.0;
-                },
-                decoration: InputDecoration(
-                  labelText: 'Monto',
-                  prefixIcon: Icon(Icons.attach_money),
-                ),
-              ),
-              TextField(
-                keyboardType: TextInputType.number,
-                onChanged: (value) {
-                  periodo = int.tryParse(value) ?? 1;
-                },
-                decoration: InputDecoration(
-                  labelText: 'Periodo (meses)',
-                  prefixIcon: Icon(Icons.calendar_today),
-                ),
-              ),
-              TextField(
-                keyboardType: TextInputType.number,
-                onChanged: (value) {
-                  dia = int.tryParse(value) ?? 1;
-                },
-                decoration: InputDecoration(
-                  labelText: 'Día del Mes',
-                  prefixIcon: Icon(Icons.today),
-                ),
-              ),
-              TextField(
-                onChanged: (value) {
-                  descripcion = value;
-                },
-                decoration: InputDecoration(
-                  labelText: 'Descripción',
-                  prefixIcon: Icon(Icons.description),
-                ),
+        );
+      },
+    );
+  }
+
+  Future<void> _mostrarDialogoAgregarMovimientoMensual(
+      BuildContext context) async {
+    String nombre = '';
+    double monto = 0.0;
+    int periodo = 0;
+    int dia = 1;
+    String descripcion = '';
+
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              Icon(Icons.add),
+              SizedBox(width: 8.0),
+              Text(
+                'Añadir Movimiento',
+                style: TextStyle(
+                    fontSize: 16.0,
+                    fontFamily: 'OpenSans-Regular',
+                    color: Color(0xFF27348B)),
               ),
             ],
           ),
-        ),
-        actions: <Widget>[
-          ElevatedButton(
-            onPressed: () {
-              agregarMovimientoMensual(nombre, monto, periodo, dia, descripcion);
-              Navigator.of(context).pop();
-            },
-            child: Text('Aceptar'),
+          content: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                TextField(
+                  onChanged: (value) {
+                    nombre = value;
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Nombre',
+                    prefixIcon: Icon(Icons.person),
+                  ),
+                ),
+                TextField(
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    monto = double.tryParse(value) ?? 0.0;
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Monto',
+                    prefixIcon: Icon(Icons.attach_money),
+                  ),
+                ),
+                TextField(
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    periodo = int.tryParse(value) ?? 1;
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Periodo (meses)',
+                    prefixIcon: Icon(Icons.calendar_today),
+                  ),
+                ),
+                TextField(
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    dia = int.tryParse(value) ?? 1;
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Día del Mes',
+                    prefixIcon: Icon(Icons.today),
+                  ),
+                ),
+                TextField(
+                  onChanged: (value) {
+                    descripcion = value;
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Descripción',
+                    prefixIcon: Icon(Icons.description),
+                  ),
+                ),
+              ],
+            ),
           ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: Text('Cancelar'),
-          ),
-        ],
-      );
-    },
-  );
-}
-
+          actions: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                agregarMovimientoMensual(
+                    nombre, monto, periodo, dia, descripcion);
+                Navigator.of(context).pop();
+              },
+              child: Text('Aceptar'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancelar'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   void agregarMovimiento(double monto, String descripcion, String tipo) {
     setState(() {
@@ -357,7 +404,8 @@ class _PagSaldoState extends State<PagSaldo> {
     _actualizarSaldo();
   }
 
-  void agregarMovimientoMensual(String nombre, double monto, int periodo, int dia, String descripcion) {
+  void agregarMovimientoMensual(
+      String nombre, double monto, int periodo, int dia, String descripcion) {
     setState(() {
       movimientos.add(Movimiento(
         monto: monto,
