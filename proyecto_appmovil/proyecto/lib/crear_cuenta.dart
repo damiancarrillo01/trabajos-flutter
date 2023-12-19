@@ -15,7 +15,7 @@ class CreateAccountPage extends StatelessWidget {
         title: Text(
           'Crear Cuenta',
           style: TextStyle(
-            fontFamily: 'OpenSans-SemiBold', // Tipo de texto "Open Sans Semi-Bold"
+            fontFamily: 'OpenSans-SemiBold', // Tipo de texto 
             color: Color(0xFF27348B), // Color #27348B
           ),
         ),
@@ -28,7 +28,7 @@ class CreateAccountPage extends StatelessWidget {
           children: <Widget>[
             // Logo
             Image.asset(
-              'assets/logo_proyecto.png',
+              'assets/Logo_Proyecto2.png',
               height: 100.0,
             ),
             SizedBox(height: 20.0),
@@ -52,7 +52,7 @@ class CreateAccountPage extends StatelessWidget {
                           color: Color(0xFF27348B), // Color #27348B
                         ),
                         labelStyle: TextStyle(
-                          fontFamily: 'OpenSans-Regular', // Tipo de texto "Open Sans Regular"
+                          fontFamily: 'OpenSans-Regular', // Tipo de texto 
                           color: Color(0xFF27348B), // Color #27348B
                         ),
                       ),
@@ -76,7 +76,7 @@ class CreateAccountPage extends StatelessWidget {
                           color: Color(0xFF27348B), // Color #27348B
                         ),
                         labelStyle: TextStyle(
-                          fontFamily: 'OpenSans-Regular', // Tipo de texto "Open Sans Regular"
+                          fontFamily: 'OpenSans-Regular', // Tipo de texto 
                           color: Color(0xFF27348B), // Color #27348B
                         ),
                       ),
@@ -103,7 +103,7 @@ class CreateAccountPage extends StatelessWidget {
                     color: Color(0xFF27348B), // Color #27348B
                   ),
                   labelStyle: TextStyle(
-                    fontFamily: 'OpenSans-Regular', // Tipo de texto "Open Sans Regular"
+                    fontFamily: 'OpenSans-Regular', // Tipo de texto
                     color: Color(0xFF27348B), // Color #27348B
                   ),
                 ),
@@ -127,7 +127,7 @@ class CreateAccountPage extends StatelessWidget {
                     color: Color(0xFF27348B), // Color #27348B
                   ),
                   labelStyle: TextStyle(
-                    fontFamily: 'OpenSans-Regular', // Tipo de texto "Open Sans Regular"
+                    fontFamily: 'OpenSans-Regular', // Tipo de texto 
                     color: Color(0xFF27348B), // Color #27348B
                   ),
                 ),
@@ -151,7 +151,7 @@ class CreateAccountPage extends StatelessWidget {
                     color: Color(0xFF27348B), // Color #27348B
                   ),
                   labelStyle: TextStyle(
-                    fontFamily: 'OpenSans-Regular', // Tipo de texto "Open Sans Regular"
+                    fontFamily: 'OpenSans-Regular', // Tipo de texto 
                     color: Color(0xFF27348B), // Color #27348B
                   ),
                 ),
@@ -173,7 +173,7 @@ class CreateAccountPage extends StatelessWidget {
                 child: Text(
                   'Crear Cuenta',
                   style: TextStyle(
-                    fontFamily: 'OpenSans-SemiBold', // Tipo de texto "Open Sans Semi-Bold"
+                    fontFamily: 'OpenSans-SemiBold', // Tipo de texto 
                     color: Color(0xFF27348B), // Color #27348B
                   ),
                 ),

@@ -29,26 +29,36 @@ class MyHomePage extends StatelessWidget {
             children: <Widget>[
               // Logo
               Image.asset(
-                'assets/logo_proyecto.png', // Reemplaza con la ruta de tu logo
-                height: 100.0, // Ajusta la altura según sea necesario
+                'assets/Logo_Proyecto2.png',
+                height: 100.0, // Ajusta la altura 
               ),
               SizedBox(height: 20.0),
 
-              // Texto debajo del logo
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  'Bienvenido a FinanSecure ¿Qué acción deseas realizar?',
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontFamily: 'OpenSans-SemiBold', // Tipo de texto "Open Sans Semi-Bold"
-                    color: Color(0xFF27348B), // Color #27348B
-                  ),
+                child: Column(
+                  children: [
+                    Text(
+                      'Bienvenido a FinanSecure',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'OpenSans-SemiBold', // Tipo de texto 
+                        color: Color(0xFF27348B), // Color #27348B
+                      ),
+                    ),
+                    Text(
+                      '¿Qué acción deseas realizar?',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontFamily: 'OpenSans-Light', 
+                        color: Color(0xFF27348B), // Color #27348B
+                      ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(height: 30.0),
 
-              // Botones
               ElevatedButton(
                 onPressed: () {
                   // Navegar a la página de crear cuenta
@@ -64,7 +74,7 @@ class MyHomePage extends StatelessWidget {
                 child: Text(
                   'Crear Cuenta',
                   style: TextStyle(
-                    color: Colors.white, // Color del texto blanco
+                    color: Colors.white, // Color del texto 
                   ),
                 ),
               ),
@@ -92,3 +102,4 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+

@@ -9,7 +9,7 @@ class WelcomePage extends StatelessWidget {
         title: Text(
           '¡Bienvenido!',
           style: TextStyle(
-            fontFamily: 'OpenSans-SemiBold', // Tipo de texto "Open Sans Semi-Bold"
+            fontFamily: 'OpenSans-SemiBold', // Tipo de texto 
             color: Color(0xFF27348B), // Color #27348B
           ),
         ),
@@ -20,14 +20,13 @@ class WelcomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // Logo al principio
             Image.asset(
-              'assets/logo_proyecto.png', // Ajusta el nombre de tu imagen
-              height: 100.0, // Ajusta la altura según sea necesario
+              'assets/Logo_Proyecto2.png', 
+              height: 100.0, // altura
             ),
             SizedBox(height: 20.0),
 
-            // Mensaje de bienvenida con el nombre
+            
             Container(
               margin: EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
@@ -35,7 +34,7 @@ class WelcomePage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'OpenSans-Regular', // Tipo de texto "Open Sans Regular"
+                  fontFamily: 'OpenSans-Regular', // Tipo de texto 
                   color: Color(0xFF27348B), // Color #27348B
                 ),
               ),
@@ -56,7 +55,7 @@ class WelcomePage extends StatelessWidget {
                   color: Color(0xFF27348B), // Color #27348B
                 ),
                 labelStyle: TextStyle(
-                  fontFamily: 'OpenSans-Regular', // Tipo de texto "Open Sans Regular"
+                  fontFamily: 'OpenSans-Regular', // Tipo de texto 
                   color: Color(0xFF27348B), // Color #27348B
                 ),
               ),
@@ -78,7 +77,7 @@ class WelcomePage extends StatelessWidget {
                   color: Color(0xFF27348B), // Color #27348B
                 ),
                 labelStyle: TextStyle(
-                  fontFamily: 'OpenSans-Regular', // Tipo de texto "Open Sans Regular"
+                  fontFamily: 'OpenSans-Regular', // Tipo de texto 
                   color: Color(0xFF27348B), // Color #27348B
                 ),
               ),
@@ -100,7 +99,7 @@ class WelcomePage extends StatelessWidget {
                   color: Color(0xFF27348B), // Color #27348B
                 ),
                 labelStyle: TextStyle(
-                  fontFamily: 'OpenSans-Regular', // Tipo de texto "Open Sans Regular"
+                  fontFamily: 'OpenSans-Regular', // Tipo de texto 
                   color: Color(0xFF27348B), // Color #27348B
                 ),
               ),
@@ -123,7 +122,7 @@ class WelcomePage extends StatelessWidget {
                     color: Color(0xFF27348B), // Color #27348B
                   ),
                   labelStyle: TextStyle(
-                    fontFamily: 'OpenSans-Regular', // Tipo de texto "Open Sans Regular"
+                    fontFamily: 'OpenSans-Regular', // Tipo de texto 
                     color: Color(0xFF27348B), // Color #27348B
                   ),
                 ),
@@ -166,7 +165,7 @@ class WelcomePage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   // Lógica para continuar
-                  // Aquí podrías realizar alguna acción adicional antes de navegar a la página principal
+                  
 
                   // Navegar a la página principal
                   Navigator.pushAndRemoveUntil(
@@ -182,7 +181,7 @@ class WelcomePage extends StatelessWidget {
                 child: Text(
                   'Continuar',
                   style: TextStyle(
-                    fontFamily: 'OpenSans-SemiBold', // Tipo de texto "Open Sans Semi-Bold"
+                    fontFamily: 'OpenSans-SemiBold', // Tipo de texto 
                     color: Color(0xFF27348B), // Color #27348B
                   ),
                 ),

@@ -16,7 +16,7 @@ class LoginPage extends StatelessWidget {
         title: Text(
           'Iniciar Sesión',
           style: TextStyle(
-            fontFamily: 'OpenSans-SemiBold', // Tipo de texto "Open Sans Semi-Bold"
+            fontFamily: 'OpenSans-SemiBold',
             color: Color(0xFF27348B), // Color #27348B
           ),
         ),
@@ -30,7 +30,7 @@ class LoginPage extends StatelessWidget {
               children: <Widget>[
                 // Logo
                 Image.asset(
-                  'assets/logo_proyecto.png',
+                  'assets/Logo_Proyecto2.png',
                   height: 100.0,
                 ),
                 SizedBox(height: 20.0),
@@ -52,7 +52,7 @@ class LoginPage extends StatelessWidget {
                         color: Color(0xFF27348B), // Color #27348B
                       ),
                       labelStyle: TextStyle(
-                        fontFamily: 'OpenSans-Regular', // Tipo de texto "Open Sans Regular"
+                        fontFamily: 'OpenSans-Regular', 
                         color: Color(0xFF27348B), // Color #27348B
                       ),
                     ),
@@ -77,7 +77,7 @@ class LoginPage extends StatelessWidget {
                         color: Color(0xFF27348B), // Color #27348B
                       ),
                       labelStyle: TextStyle(
-                        fontFamily: 'OpenSans-Regular', // Tipo de texto "Open Sans Regular"
+                        fontFamily: 'OpenSans-Regular', // Tipo de texto 
                         color: Color(0xFF27348B), // Color #27348B
                       ),
                     ),
@@ -90,10 +90,9 @@ class LoginPage extends StatelessWidget {
                   width: 300.0,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Lógica para iniciar sesión
-                      // Aquí deberías verificar las credenciales, por ejemplo.
+                      // Aquí se deben verificar las credenciales, por ejemplo
 
-                      // Luego, navega a la nueva página
+                      // navega a la nueva página
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => WelcomePage()),
@@ -106,7 +105,7 @@ class LoginPage extends StatelessWidget {
                     child: Text(
                       'Iniciar Sesión',
                       style: TextStyle(
-                        fontFamily: 'OpenSans-SemiBold', // Tipo de texto "Open Sans Semi-Bold"
+                        fontFamily: 'OpenSans-SemiBold', // Tipo de texto 
                         color: Color(0xFF27348B), // Color #27348B
                       ),
                     ),

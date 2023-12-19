@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'PaginaUsuario.dart';
 
 class AhorrosProgramados extends StatefulWidget {
   @override
@@ -17,103 +18,115 @@ class _AhorrosProgramadosState extends State<AhorrosProgramados> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFEBEFFA), // Fondo de la barra de navegación
+        backgroundColor: Color(0xFFEBEFFA),
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset(
-              'assets/logo_proyecto.png',
-              height: 30.0,
+              'assets/Logo_Proyecto1.png',
+              height: 40.0,
+            ),
+            IconButton(
+              icon: Icon(Icons.person),
+              onPressed: () {
+                // Navegar a la página de usuario
+                Navigator.push(context, MaterialPageRoute(builder: (context) => PaginaUsuario()));
+              },
             ),
           ],
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            // Tabla de Ahorros Programados
-            Text(
-              'Ahorros Programados:',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-Regular', color: Color(0xFF27348B)),
-            ),
-            SizedBox(height: 10.0),
-            LimitedBox(
-              maxHeight: 150.0,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
+      body: Container(
+        color: Color(0xFFEBEFFA), // Color de fondo #ebeffa
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              
+              Text(
+                'Ahorros Programados:',
+                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-Regular', color: Color(0xFF27348B)),
+              ),
+              SizedBox(height: 10.0),
+              // Tabla de Ahorros Programados
+              LimitedBox(
+                maxHeight: 150.0,
                 child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: DataTable(
-                    columns: [
-                      DataColumn(label: _styledText('Nombre')),
-                      DataColumn(label: _styledText('Monto a Descontar')),
-                      DataColumn(label: _styledText('Día')),
-                      DataColumn(label: _styledText('Periodo (meses)')),
-                      DataColumn(label: _styledText('Total Ahorro')),
-                    ],
-                    rows: ahorros.map((ahorro) {
-                      return DataRow(cells: [
-                        DataCell(_styledText(ahorro.nombre)),
-                        DataCell(_styledText('\$${ahorro.montoMensual.toStringAsFixed(2)}')),
-                        DataCell(_styledText(ahorro.dia.toString())),
-                        DataCell(_styledText(ahorro.periodo.toString())),
-                        DataCell(_styledText('\$${ahorro.montoTotal.toStringAsFixed(2)}')),
-                      ]);
-                    }).toList(),
+                  scrollDirection: Axis.vertical,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: DataTable(
+                      columns: [
+                        DataColumn(label: _styledText('Nombre')),
+                        DataColumn(label: _styledText('Monto a Descontar')),
+                        DataColumn(label: _styledText('Día')),
+                        DataColumn(label: _styledText('Periodo (meses)')),
+                        DataColumn(label: _styledText('Total Ahorro')),
+                      ],
+                      rows: ahorros.map((ahorro) {
+                        return DataRow(cells: [
+                          DataCell(_styledText(ahorro.nombre)),
+                          DataCell(_styledText('\$${ahorro.montoMensual.toStringAsFixed(2)}')),
+                          DataCell(_styledText(ahorro.dia.toString())),
+                          DataCell(_styledText(ahorro.periodo.toString())),
+                          DataCell(_styledText('\$${ahorro.montoTotal.toStringAsFixed(2)}')),
+                        ]);
+                      }).toList(),
+                    ),
                   ),
                 ),
               ),
-            ),
 
-            SizedBox(height: 20.0),
+              SizedBox(height: 20.0),
 
-            // Formulario para añadir Ahorro Programado
-            Text(
-              'Añadir Ahorro Programado:',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-Regular', color: Color(0xFF27348B)),
-            ),
-            SizedBox(height: 10.0),
-            _buildTextFieldWithIcon(
-              controller: nombreController,
-              labelText: 'Nombre',
-              icon: Icons.person,
-            ),
-            _buildTextFieldWithIcon(
-              controller: montoTotalController,
-              labelText: 'Monto Total',
-              icon: Icons.attach_money,
-              keyboardType: TextInputType.number,
-            ),
-            _buildTextFieldWithIcon(
-              controller: diaController,
-              labelText: 'Día',
-              icon: Icons.calendar_today,
-              keyboardType: TextInputType.number,
-            ),
-            _buildTextFieldWithIcon(
-              controller: periodoController,
-              labelText: 'Periodo (meses)',
-              icon: Icons.event,
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 10.0),
-            ElevatedButton(
-              onPressed: () {
-                _agregarAhorroProgramado();
-              },
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xFF27348B),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
+              // Formulario para añadir Ahorro Programado
+              Text(
+                'Añadir Ahorro Programado:',
+                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-Regular', color: Color(0xFF27348B)),
+              ),
+              SizedBox(height: 10.0),
+              _buildTextFieldWithIcon(
+                controller: nombreController,
+                labelText: 'Nombre',
+                icon: Icons.description,
+              ),
+              _buildTextFieldWithIcon(
+                controller: montoTotalController,
+                labelText: 'Monto Total',
+                icon: Icons.attach_money,
+                keyboardType: TextInputType.number,
+              ),
+              _buildTextFieldWithIcon(
+                controller: diaController,
+                labelText: 'Día',
+                icon: Icons.calendar_today,
+                keyboardType: TextInputType.number,
+              ),
+              _buildTextFieldWithIcon(
+                controller: periodoController,
+                labelText: 'Periodo (meses)',
+                icon: Icons.event,
+                keyboardType: TextInputType.number,
+              ),
+              SizedBox(height: 10.0),
+              ElevatedButton(
+                onPressed: () {
+                  _agregarAhorroProgramado();
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF27348B),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                child: Text(
+                  'Añadir',
+                  style: TextStyle(fontFamily: 'OpenSans-Regular', color: Colors.white),
                 ),
               ),
-              child: Text(
-                'Añadir',
-                style: TextStyle(fontFamily: 'OpenSans-Regular', color: Colors.white),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

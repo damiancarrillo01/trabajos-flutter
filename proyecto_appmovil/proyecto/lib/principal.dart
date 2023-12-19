@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'ahorrosprogramados.dart'; // Importa el nuevo archivo
-
+import 'PaginaUsuario.dart';
 void main() {
   runApp(MyApp());
 }
@@ -27,9 +27,22 @@ class _PagSaldoState extends State<PagSaldo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          'assets/logo_proyecto.png',
-          height: 40.0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Image.asset(
+              'assets/Logo_Proyecto1.png',
+              height: 40.0,
+            ),
+            SizedBox(width: 8.0),
+            IconButton(
+              icon: Icon(Icons.person),
+              onPressed: () {
+                // Navegar a la página de usuario
+                Navigator.push(context, MaterialPageRoute(builder: (context) => PaginaUsuario()));
+              },
+            ),
+          ],
         ),
       ),
       body: SingleChildScrollView(
@@ -39,7 +52,7 @@ class _PagSaldoState extends State<PagSaldo> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              // Rectángulo blanco para el saldo actual
+              
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(16.0),
@@ -55,7 +68,7 @@ class _PagSaldoState extends State<PagSaldo> {
               ),
               SizedBox(height: 20.0),
 
-              // Rectángulo blanco más grande para Movimientos de Dinero
+              
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(16.0),
@@ -98,122 +111,155 @@ class _PagSaldoState extends State<PagSaldo> {
 
               // Sección de Añadir Gasto del Día
               SizedBox(height: 20.0),
-              Text(
-                'Añadir Gasto del Día:',
-                style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'OpenSans-Regular',
-                    color: Color(0xFF27348B)),
-              ),
-              SizedBox(height: 10.0),
-              ElevatedButton(
-                onPressed: () {
-                  _mostrarDialogoAgregarMovimiento(context, 'Gasto');
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF27348B),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
+              Container(
+                width: double.infinity,
+                color: Colors.white,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(Icons.add, color: Colors.white),
-                    SizedBox(width: 8.0),
-                    Text('Añadir Gasto',
-                        style: TextStyle(
+                    SizedBox(height: 20.0),
+                    Text(
+                      'Añadir Gasto del Día:',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'OpenSans-Regular',
+                        color: Color(0xFF27348B),
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
+                    ElevatedButton(
+                      onPressed: () {
+                        _mostrarDialogoAgregarMovimiento(context, 'Gasto');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.transparent, // Sin relleno
+                        onPrimary: Color(0xFF27348B), // Color del texto
+                        elevation: 0, // Sin sombra
+                        side: BorderSide(
+                            color: Color(0xFF27348B)), // Borde del botón
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.add, color: Color(0xFF27348B)),
+                          SizedBox(width: 8.0),
+                          Text(
+                            'Añadir Gasto',
+                            style: TextStyle(
+                              fontFamily: 'OpenSans-Regular',
+                              color: Color(0xFF27348B),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+
+                    SizedBox(height: 20.0),
+                    Text(
+                      'Añadir Ingreso del Día:',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'OpenSans-Regular',
+                        color: Color(0xFF27348B),
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
+                    ElevatedButton(
+                      onPressed: () {
+                        _mostrarDialogoAgregarMovimiento(context, 'Ingreso');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.transparent, // Sin relleno
+                        onPrimary: Color(0xFF27348B), // Color del texto
+                        elevation: 0, // Sin sombra
+                        side: BorderSide(color: Color(0xFF27348B)),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.add, color: Color(0xFF27348B)),
+                          SizedBox(width: 8.0),
+                          Text('Añadir Ingreso',
+                              style: TextStyle(
+                                fontFamily: 'OpenSans-Regular',
+                                color: Color(0xFF27348B),
+                              )),
+                        ],
+                      ),
+                    ),
+
+                    SizedBox(height: 20.0),
+                    Text(
+                      'Añadir Movimiento Mensual:',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'OpenSans-Regular',
+                        color: Color(0xFF27348B),
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
+                    ElevatedButton(
+                      onPressed: () {
+                        _mostrarDialogoAgregarMovimientoMensual(context);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.transparent, // Sin relleno
+                        onPrimary: Color(0xFF27348B), // Color del texto
+                        elevation: 0, // Sin sombra
+                        side: BorderSide(color: Color(0xFF27348B)),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.add, color: Color(0xFF27348B)),
+                          SizedBox(width: 8.0),
+                          Text('Añadir Movimiento Mensual',
+                              style: TextStyle(
+                                fontFamily: 'OpenSans-Regular',
+                                color: Color(0xFF27348B),
+                              )),
+                        ],
+                      ),
+                    ),
+
+                    SizedBox(height: 20.0),
+                    Text(
+                      '¿Necesitas Ahorrar?',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'OpenSans-Regular',
+                        color: Color(0xFF27348B),
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AhorrosProgramados()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.transparent, // Sin relleno
+                        onPrimary: Color(0xFF27348B), // Color del texto
+                        elevation: 0, // Sin sombra
+                        side: BorderSide(
+                            color: Color(0xFF27348B)), // Borde del botón
+                      ),
+                      child: Text('Ahorros Programados',
+                          style: TextStyle(
                             fontFamily: 'OpenSans-Regular',
-                            color: Colors.white)),
+                            color: Color(0xFF27348B),
+                          )),
+                    ),
                   ],
                 ),
-              ),
-
-              // Sección de Añadir Ingreso del Día
-              SizedBox(height: 20.0),
-              Text(
-                'Añadir Ingreso del Día:',
-                style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'OpenSans-Regular',
-                    color: Color(0xFF27348B)),
-              ),
-              SizedBox(height: 10.0),
-              ElevatedButton(
-                onPressed: () {
-                  _mostrarDialogoAgregarMovimiento(context, 'Ingreso');
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF27348B),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.add, color: Colors.white),
-                    SizedBox(width: 8.0),
-                    Text('Añadir Ingreso',
-                        style: TextStyle(
-                            fontFamily: 'OpenSans-Regular',
-                            color: Colors.white)),
-                  ],
-                ),
-              ),
-
-              // Sección de Añadir Movimiento Mensual
-              SizedBox(height: 20.0),
-              Text(
-                'Añadir Movimiento Mensual:',
-                style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'OpenSans-Regular',
-                    color: Color(0xFF27348B)),
-              ),
-              SizedBox(height: 10.0),
-              ElevatedButton(
-                onPressed: () {
-                  _mostrarDialogoAgregarMovimientoMensual(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF27348B),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.add, color: Colors.white),
-                    SizedBox(width: 8.0),
-                    Text('Añadir Movimiento Mensual',
-                        style: TextStyle(
-                            fontFamily: 'OpenSans-Regular',
-                            color: Colors.white)),
-                  ],
-                ),
-              ),
-
-              // Sección Necesitas Ahorrar?
-              SizedBox(height: 20.0),
-              Text(
-                '¿Necesitas Ahorrar?',
-                style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'OpenSans-Regular',
-                    color: Color(0xFF27348B)),
-              ),
-              SizedBox(height: 10.0),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => AhorrosProgramados()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF27348B),
-                ),
-                child: Text('Ahorros Programados',
-                    style: TextStyle(
-                        fontFamily: 'OpenSans-Regular', color: Colors.white)),
               ),
             ],
           ),
@@ -223,7 +269,7 @@ class _PagSaldoState extends State<PagSaldo> {
   }
 
   String _obtenerSigno(String tipo) {
-    return tipo == 'Gasto' ? '-' : '+';
+    return tipo == 'Gasto' ? '' : '+';
   }
 
   Future<void> _mostrarDialogoAgregarMovimiento(
@@ -327,7 +373,7 @@ class _PagSaldoState extends State<PagSaldo> {
                   },
                   decoration: InputDecoration(
                     labelText: 'Nombre',
-                    prefixIcon: Icon(Icons.person),
+                    prefixIcon: Icon(Icons.description),
                   ),
                 ),
                 TextField(
